@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body style="background: white;">
+    <h1>Hello World!</h1>
+    <p>
+        We are using node <script>document.write(process.versions.node)</script>,
+        Chrome <script>document.write(process.versions.chrome)</script>,
+        and Electron <script>document.write(process.versions.electron)</script>.
+    </p>
+    <input type="text" id="fname" onchange="getText(this.value)">
+    <textarea id="ipfs_value"></textarea>
+</body>
+<script>
+const IPFS = require('ipfs-core')
+
+let ipfs
+
+async function open_ipfs() {
+  ipfs = await IPFS.create();
+  const { cid } = await ipfs.add('Hello world')
+  console.log(cid)
+}
+
+async function getText(cid) {
+    for await (const data of ipfs.cat(cid)) {
+      document.getElementById('ipfs_value').innerText = data
+    }
+}
+
+open_ipfs()
+
+</script>
+</html>
