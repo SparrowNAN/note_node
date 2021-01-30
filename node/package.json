@@ -1,0 +1,19 @@
+{
+  "name": "pns",
+  "version": "1.0.0",
+  "description": "personal node synchronization tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sparrow",
+  "license": "ISC",
+  "dependencies": {
+    "libp2p": "^0.30.6",
+    "libp2p-bootstrap": "^0.12.1",
+    "libp2p-mplex": "^0.10.2",
+    "libp2p-noise": "^2.0.4",
+    "libp2p-websockets": "^0.15.0",
+    "peer-id": "^0.14.3"
+  }
+}
